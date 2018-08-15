@@ -63,6 +63,7 @@ void printtree(node* node)
 
 int main()
 {
+	// Will need to edit string to remove brackets from start and finish
 	char str[] = "1,-23,341,2,532,1  ,    2 ,,1";
 	char *tok = NULL, *fixed = str;
 	tok = strtok_r(str, ",", &fixed);
@@ -70,6 +71,7 @@ int main()
 	while (tok != NULL)
 	{
 		// loops through and checks all characters are digits, numbers or white space
+		// potential to do this better?
 		for (int i=0; tok[i]!=0; i++)
  		{if (!isdigit(tok[i]) && tok[i] != ' ' && tok[i] != '-') {printf("INCORRECT INPUT %c",tok[i]);}}
 	
