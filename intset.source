@@ -1,0 +1,60 @@
+
+CREATE function intset_in(cstring)
+returns intset
+as '_OBJWD_/intset'
+language C IMMUTABLE STRICT;
+CREATE FUNCTION intset_out(intset)
+returns cstring                              
+as '_OBJWD_/intset'
+language C IMMUTABLE STRICT;
+
+CREATE FUNCTION intset_card(intset)
+returns integer                  
+as '_OBJWD_/intset'
+language C IMMUTABLE STRICT;
+
+CREATE FUNCTION intset_contains(integer, intset)
+returns boolean                  
+as '_OBJWD_/intset'
+language C IMMUTABLE STRICT;
+
+CREATE FUNCTION intset_subset(intset,intset)
+returns boolean
+as '_OBJWD_/intset'
+language C IMMUTABLE STRICT;
+
+CREATE FUNCTION intset_equal(intset,intset)
+returns boolean
+as '_OBJWD_/intset'
+language C IMMUTABLE STRICT;
+
+CREATE FUNCTION intset_not_equal(intset,intset)
+returns boolean
+as '_OBJWD_/intset'
+language C IMMUTABLE STRICT;
+
+CREATE FUNCTION intset_union(intset,intset) returns cstring
+	as '_OBJWD_/intset' language C IMMUTABLE STRICT;
+CREATE FUNCTION intset_inters(intset,intset) returns cstring
+	as '_OBJWD_/intset' language C IMMUTABLE STRICT;
+CREATE FUNCTION intset_dif(intset,intset) returns cstring
+	as '_OBJWD_/intset' language C IMMUTABLE STRICT;
+CREATE FUNCTION intset_disj(intset,intset) returns cstring
+	as '_OBJWD_/intset' language C IMMUTABLE STRICT;
+
+
+
+
+CREATE TYPE intset ( internallength =  VARIABLE, input = intset_in, output = intset_out, storage = EXTENDED );
+CREATE OPERATOR @ (procedure=intset_card,rightarg=intset);
+CREATE OPERATOR <@ (procedure=intset_contains,leftarg=integer,rightarg=intset,commutator= <@ );
+CREATE OPERATOR @> (procedure=intset_subset,leftarg=intset,rightarg=intset,commutator= @> );
+CREATE OPERATOR = (procedure=intset_equal,leftarg=intset,rightarg=intset,commutator= =  , negator = != );
+CREATE OPERATOR != (procedure=intset_not_equal,leftarg=intset,rightarg=intset,commutator= !=  , negator = = );
+CREATE OPERATOR || (procedure=intset_union,leftarg=intset,rightarg=intset,commutator= || );
+CREATE OPERATOR && (procedure=intset_inters,leftarg=intset,rightarg=intset,commutator= && );
+CREATE OPERATOR - (procedure=intset_dif,leftarg=intset,rightarg=intset,commutator= - );
+CREATE OPERATOR !! (procedure=intset_disj,leftarg=intset,rightarg=intset,commutator= !! );
+
+
+
