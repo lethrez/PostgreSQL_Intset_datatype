@@ -22,7 +22,7 @@ typedef struct bst
 node *newNode(int value)
 {
 	node *tmp = (node*)malloc(sizeof(node));
-	if (tmp == NULL){printf("WHAT TO DO HERE??");}
+	if (tmp == NULL){printf("Create postgres ERROR here");}
 	tmp->key = value;
 	tmp->right = tmp->left = NULL;
 	return tmp;
@@ -33,7 +33,7 @@ node *newNode(int value)
 bst *newbst()
 {
 	bst *tmp = (bst*)malloc(sizeof(bst));
-	if (tmp == NULL){printf("WHAT TO DO HERE?");}
+	if (tmp == NULL){printf("Create postgres ERROR here");}
 	tmp->root = NULL;
 	return tmp;
 }
