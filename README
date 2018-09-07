@@ -1,0 +1,28 @@
+/*
+ * src/tutorial/intset.c
+ *
+ ******************************************************************************
+  This file contains routines that can be bound to a Postgres backend and
+  called by the backend in the process of processing queries.  The calling
+  format for these routines is dictated by Postgres architecture.
+  
+  The structure is defined in intset.c and intset.source has the source utilised via 
+  the makefial defined in /src/tutorial/Makefile.
+  
+  NOTE: the following lines must be changed to include intset (lines 16,17)
+  MODULES = complex funcs intset
+  DATA_built = advanced.sql basics.sql complex.sql funcs.sql syscat.sql intset.sql
+  
+  Once created the SQL file is simply imported into PostgreSQL (\i intset.sql) 
+  when in the working directory
+
+  
+  Implementation could be optimized through an index wrapper data structure to make
+  searches such as binary search and ordering more efficient.
+  This would allow binary search when calling functions.
+  The file is not incredibly optimized as it was a learning excercise for the 
+  backend of postgreSQL.
+
+  Created by Leo Hoare and Isabelle Lou
+******************************************************************************/
+
